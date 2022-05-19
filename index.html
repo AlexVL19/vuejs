@@ -22,12 +22,20 @@
             <p>{{message}}</p>
 
             <!-- Search -->
-            <form class="search">
-                <input type="text" class="search__input" required placeholder="Search GitHub users">
-                <input type="submit" class="search__submit" value="Search">
+            <form class="search" v-on:submit.prevent="search">
+                <input v-model="searching" type="text" class="search__input" required placeholder="Search GitHub users">
+                <input type="submit" class="search__submit" value="Buscar">
             </form>
 
             <!-- Result -->
+            <div class="result" v-if="result">
+                <h2 class="result__name">Alexis Valencia</h2>
+                <img src="perro.png" alt="" class="result__avatar">
+                <p class="result__bio">Inserte bio aquí jajajaj xdxdxd
+                <br>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="result__blog">Sorpresa!</a>
+                </p>
+            </div>
             <!-- Error -->
             <div class="result__error"></div>
         </article>
