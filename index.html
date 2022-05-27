@@ -19,7 +19,6 @@
         <!-- Content -->
         <article class="content">
             <h1 class="content__title">Search GitHub users</h1>
-            <p>{{message}}</p>
 
             <!-- Search -->
             <form class="search" v-on:submit.prevent="search">
@@ -29,15 +28,21 @@
 
             <!-- Result -->
             <div class="result" v-if="result">
-                <h2 class="result__name">Alexis Valencia</h2>
-                <img src="perro.png" alt="" class="result__avatar">
-                <p class="result__bio">Inserte bio aquí jajajaj xdxdxd
+
+                <!-- Insertamos los resultados del array que conseguimos de manera reactiva -->
+                <h2 class="result__name">{{result.name}}</h2>
+                <img v-bind:src="result.avatar_url" alt="" class="result__avatar">
+                <p class="result__bio">{{result.bio}}
                 <br>
                 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="result__blog">Sorpresa!</a>
                 </p>
             </div>
+
+            <!-- En caso de no haber búsqueda -->
+            <p v-else>Esperando a una respuesta...</p>
+
             <!-- Error -->
-            <div class="result__error"></div>
+            <div v-if="error" class="result__error">Error</div>
         </article>
     </div>
     <script src="js/main.js"></script>
