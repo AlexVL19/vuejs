@@ -14,6 +14,11 @@
     <div id="app">
         <!-- Favorites -->
         <div class="favorites">
+            <div class="favorite" v-for="fav in allFavorite">
+                <a href="">
+                    <img v-bind:src="fav.avatar_url" class="favorite__avatar">
+                </a>
+            </div>
         </div>
 
         <!-- Content -->
@@ -29,12 +34,17 @@
             <!-- Result -->
             <div class="result" v-if="result">
 
+                <!-- Añadir a favoritos -->
+
+                <a v-if="isFavorite" class="result__toggle-favorite" href="" v-on:click.prevent="removeFavs">Eliminar favorito <img src="img/corasaoroto.png" style="width: 15px; height: 15px;"></a>
+                <a v-else="" class="result__toggle-favorite" href="" v-on:click.prevent="addFavs">Añadir favorito <img src="img/corasao.png" style="width: 15px; height: 15px;"></a>
+
                 <!-- Insertamos los resultados del array que conseguimos de manera reactiva -->
                 <h2 class="result__name">{{result.name}}</h2>
                 <img v-bind:src="result.avatar_url" alt="" class="result__avatar">
                 <p class="result__bio">{{result.bio}}
                 <br>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="result__blog">Sorpresa!</a>
+                <a target="_blank" v-bind:href="result.html_url" class="result__blog">Perfil</a>
                 </p>
             </div>
 
